@@ -88,6 +88,7 @@ public class NumberTriangle {
      *
      */
     public int retrieve(String path) {
+        //retrieve method
         if (path.isEmpty()) {
             return root;
         }
