@@ -101,7 +101,7 @@ public class NumberTriangle {
         }
         else if (direction == 'R') {
             return right.retrieve(restPath);
-        }*/
+        }
         return -1;
     }
 
