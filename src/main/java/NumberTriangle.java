@@ -88,7 +88,17 @@ public class NumberTriangle {
      *
      */
     public int retrieve(String path) {
-        // TODO implement this method
+        if (path.isEmpty()) {
+            return root;
+        }
+        char direction = path.charAt(0);
+        String restPath = path.substring(1);
+        if (direction == 'L') {
+            return left.retrieve(restPath);
+        }
+        else if (direction == 'R') {
+            return right.retrieve(restPath);
+        }
         return -1;
     }
 
@@ -110,11 +120,11 @@ public class NumberTriangle {
         BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
 
 
-        // TODO define any variables that you want to use to store things
 
         // will need to return the top of the NumberTriangle,
         // so might want a variable for that.
         NumberTriangle top = null;
+        // list<NumberTriangle> parentRow= null;
 
         String line = br.readLine();
         while (line != null) {
