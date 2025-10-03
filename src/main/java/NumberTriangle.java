@@ -1,4 +1,6 @@
 import java.io.*;
+import java.util.List;
+import java.util.ArrayList;
 
 /**
  * This is the provided NumberTriangle class to be used in this coding task.
@@ -99,7 +101,7 @@ public class NumberTriangle {
         }
         else if (direction == 'R') {
             return right.retrieve(restPath);
-        }
+        }*/
         return -1;
     }
 
@@ -125,13 +127,31 @@ public class NumberTriangle {
         // will need to return the top of the NumberTriangle,
         // so might want a variable for that.
         NumberTriangle top = null;
-        // list<NumberTriangle> parentRow= null;
+        List<NumberTriangle> parentRow= null;
 
         String line = br.readLine();
         while (line != null) {
+            String[] lineParts = line.trim().split("\\s+");
+            List<NumberTriangle> childRow = new ArrayList<>();
+            for (int p = 0; p < lineParts.length; p++) {
+                int value = Integer.parseInt(lineParts[p]);
+                childRow.add(new NumberTriangle(value));
+            }
+
+            if (top == null) {
+                top = childRow.get(0);
+            }
+            else {
+                for (int i = 0; i < parentRow.size(); i++) {
+                    parentRow.get(i).setLeft(childRow.get(i));
+                    parentRow.get(i).setRight(childRow.get(i + 1));
+                }
+            }
+
+            parentRow = childRow;
 
             // remove when done; this line is included so running starter code prints the contents of the file
-            System.out.println(line);
+            // System.out.println(line);
 
             // TODO process the line
 
