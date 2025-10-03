@@ -90,7 +90,8 @@ public class NumberTriangle {
      *
      */
     public int retrieve(String path) {
-        /**if (path.isEmpty()) {
+        //retrieve method
+        if (path.isEmpty()) {
             return root;
         }
         char direction = path.charAt(0);
